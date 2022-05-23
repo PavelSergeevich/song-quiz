@@ -1,0 +1,300 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.main-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 90px 0px;
+    gap: 30px;
+
+    position: absolute;
+    width: 1100px;
+    height: 484px;
+    left: calc(50% - 1100px/2);
+    top: 298px;
+
+    background: #1B1D31;
+    border-radius: 10px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.logo {
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 13rem;
+    z-index: 10;
+}
+
+.modal {
+    display: block;
+    width: 110rem;
+    height: 48.4rem;
+    background-color: #1b1d31;
+    z-index: 20;
+    padding: 9rem 0;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.modal-start {
+    text-align: center;
+    z-index: 1;
+}
+
+.modal__title {
+    font-family: "Prompt";
+    font-style: normal;
+    color: #fff;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 4.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal__subtitle {
+    font-family: "Arial";
+    font-style: normal;
+    color: #fff;
+    opacity: .7;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.5rem;
+    margin-bottom: 9rem;
+}
+
+.modal__input {
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.5rem;
+    color: #fff;
+    width: 73rem;
+    height: 5.5rem;
+    background-color: transparent;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid #373b62;
+    outline: 2px solid transparent;
+    margin-bottom: 2rem;
+    transition-property: border-color;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .2s;
+}
+
+.modal__input:focus, .modal__input:active {
+    outline: none;
+    border-bottom: 1px solid #fff;
+    font-weight: 700;
+    opacity: 1;
+}
+
+.modal__input:hover {
+    border-bottom: 1px solid grey;
+}
+
+.quiz__button {
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.3rem;
+    letter-spacing: 1px;
+    width: 20rem;
+    height: 6.5rem;
+    background: linear-gradient(90deg,#7e55b3 -.37%,#a769c4 100.37%);
+    border-radius: 5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal__button {
+    margin: 0 auto;
+}
+
+.modal__button:hover {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(90deg, #7E55B3 -0.37%, #A769C4 100.37%);
+}
+
+.quiz__button-arrow {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0.7rem;
+}
+
+.quiz__button:disabled {
+    background: linear-gradient(0deg,grey -.37%,#656565 100.37%);
+    cursor: not-allowed;
+}
+@media screen and (max-width: 600px) {
+    .modal {
+        width: 30rem;
+        height: 20rem;
+        padding: 2rem 0;
+        border-radius: 0.3rem;
+    }
+
+    .modal__title {
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .modal__subtitle {
+        font-weight: 400;
+        font-size: .8rem;
+        line-height: .8rem;
+        margin-bottom: 3rem;
+    }
+
+    .modal__input {
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: .8rem;
+        color: #fff;
+        width: 20rem;
+        height: 2.5rem;
+    }
+
+    .quiz__button {
+        font-weight: 400;
+        font-size: .8rem;
+        line-height: .8rem;
+        letter-spacing: .6px;
+        width: 14rem;
+        height: 5rem;
+    }
+
+    .quiz__button-arrow {
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-left: 0.4rem;
+    }
+}
+
+@media screen and (min-width: 599px) and (max-width: 900px) {
+    .modal {
+        width: 55rem;
+        height: 30rem;
+        padding: 5rem 0;
+        border-radius: 0.5rem;
+    }
+
+    .modal__title {
+        font-weight: 500;
+        font-size: 2rem;
+        line-height: 3rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .modal__subtitle {
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1rem;
+        margin-bottom: 5rem;
+    }
+
+    .modal__input {
+        font-weight: 500;
+        font-size: 1.2rem;
+        line-height: 1rem;
+        color: #fff;
+        width: 37rem;
+        height: 3rem;
+    }
+
+    .quiz__button {
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1rem;
+        letter-spacing: .6px;
+        width: 16rem;
+        height: 5.5rem;
+    }
+
+    .quiz__button-arrow {
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-left: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 899px) and (max-width: 1185px) {
+    .modal {
+        width: 85rem;
+        height: 40rem;
+        padding: 7rem 0;
+        border-radius: 0.7rem;
+    }
+
+    .modal__title {
+        font-weight: 600;
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .modal__subtitle {
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 1.3rem;
+        margin-bottom: 6rem;
+    }
+
+    .modal__input {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3rem;
+        color: #fff;
+        width: 55rem;
+        height: 3.5rem;
+    }
+
+    .quiz__button {
+        font-weight: 600;
+        font-size: 1.2rem;
+        line-height: 1.3rem;
+        letter-spacing: .8px;
+        width: 18rem;
+        height: 6rem;
+    }
+
+    .quiz__button-arrow {
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-left: 0.6rem;
+    }
+}
