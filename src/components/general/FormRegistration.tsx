@@ -1,11 +1,18 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
+import ReactDOM from 'react-dom/client';
+import { Link } from "react-router-dom";
 import "./FormRegistration.css"
-//import Input from "../elements/Input";
-//import Button from "../elements/Button";
 import logo from "../../logo.png"
+import Arrow from "../icons/Arrow";
+import {getDataFromSStorage, setDataToSStorage} from "../../api/api";
+
 
 const FormRegistration = () => {
     const [name, setName] = useState();
+
+    useEffect(() => {
+        setDataToSStorage("https://levi9-song-quiz.herokuapp.com/api/data");
+    }, [])
 
     return (
     <div className="wrapper">
@@ -29,37 +36,28 @@ const FormRegistration = () => {
                     onChange={(e:ChangeEvent<HTMLInputElement>) => {
                         // @ts-ignore
                         setName(e.target.value);
+                        sessionStorage.setItem("player", e.target.value)
                     }}
                     value={name}
                 >
                 </input>
             </div>
             <div>
-                <button
-                    type="submit"
-                    tabIndex={0}
-                    className="quiz__button modal__button"
-                    disabled={!name}
-                    onClick={(e) => {
-                        e.preventDefault()
-
-                    }}>
-                    START QUIZ
-                    <svg
-                        width="50"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="quiz__button-arrow"
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.14l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a20 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                            clipRule="evenodd"
+                <Link to="/quiz" className="link">
+                    <button
+                        type="submit"
+                        tabIndex={0}
+                        className="quiz__button modal__button"
+                        disabled={!name}
+                        onClick={(e) => {
+                            const scoreId: any = "score_" + name
+                            sessionStorage.setItem(scoreId, "0")
+                        }}
                         >
-                        </path>
-                    </svg>
-                </button>
+                        START QUIZ
+                        <Arrow classForArrow={"quiz__button-arrow"} />
+                    </button>
+                </Link>
             </div>
         </form>
     </div>

@@ -1,0 +1,266 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.logo {
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 13rem;
+    z-index: 10;
+}
+
+img {
+    vertical-align: top;
+}
+
+.modal_container {
+    display: block;
+    position: relative;
+    width: 110rem;
+    height: 35.3rem;
+    background-color: #1b1d31;
+    padding: 9rem 0;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.modal-summary {
+    text-align: center;
+}
+
+.modal__picture {
+    position: absolute;
+    width: 30rem;
+    height: 30rem;
+    left: 50%;
+    top: -10%;
+    transform: translate(-50%,-50%);
+    z-index: -15;
+}
+
+.modal__score {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: -10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13rem;
+    height: 13rem;
+    border-radius: 50%;
+    color: #fff;
+    background: #373b62;
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 4.8rem;
+    line-height: 1.5rem;
+}
+
+.quiz__button {
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.3rem;
+    letter-spacing: 1px;
+    width: 20rem;
+    height: 6.5rem;
+    background: linear-gradient(90deg,#7e55b3 -.37%,#a769c4 100.37%);
+    border-radius: 5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal__button {
+    margin: 0 auto;
+}
+
+.modal__button:hover {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(90deg, #7E55B3 -0.37%, #A769C4 100.37%);
+}
+
+.quiz__button-arrow {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0.7rem;
+}
+
+.modal__title {
+    font-family: "Prompt";
+    font-style: normal;
+    color: #fff;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 4.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal__subtitle {
+    font-family: "Arial";
+    font-style: normal;
+    color: #fff;
+    opacity: .7;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.link {
+    text-decoration: none;
+}
+
+@media (max-width: 1185px) {
+    .modal_container {
+        width: 85rem;
+        height: 30rem;
+        padding: 7rem 0;
+        border-radius: 0.7rem;
+    }
+    .modal__picture {
+        width: 25rem;
+        height: 25rem;
+    }
+    .modal__score {
+        width: 11rem;
+        height: 11rem;
+        font-weight: 600;
+        font-size: 4rem;
+        line-height: 1.3rem;
+    }
+    .modal__title {
+        font-weight: 600;
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+        margin-bottom: 0.8rem;
+    }
+    .modal__subtitle {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.3rem;
+        margin-bottom: 2.5rem;
+    }
+    .quiz__button {
+        font-weight: 600;
+        font-size: 1.2rem;
+        line-height: 1.3rem;
+        letter-spacing: .8px;
+        width: 18rem;
+        height: 6rem;
+    }
+    .quiz__button-arrow {
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-left: 0.6rem;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .modal_container {
+        width: 55rem;
+        height: 25rem;
+        padding: 5rem 0;
+        border-radius: 0.5rem;
+    }
+    .modal__picture {
+        width: 20rem;
+        height: 20rem;
+    }
+    .modal__score {
+        width: 9rem;
+        height: 9rem;
+        font-weight: 500;
+        font-size: 3.5rem;
+        line-height: 1rem;
+    }
+    .modal__title {
+        font-weight: 500;
+        font-size: 2rem;
+        line-height: 3rem;
+        margin-bottom: 0.6rem;
+    }
+    .modal__subtitle {
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 1rem;
+        margin-bottom: 2rem;
+    }
+    .quiz__button {
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1rem;
+        letter-spacing: .6px;
+        width: 16rem;
+        height: 5.5rem;
+    }
+    .quiz__button-arrow {
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-left: 0.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal_container {
+        width: 30rem;
+        height: 20rem;
+        padding: 2rem 0;
+        border-radius: 0.3rem;
+    }
+    .modal__picture {
+        width: 15rem;
+        height: 15rem;
+    }
+    .modal__score {
+        width: 7rem;
+        height: 7rem;
+        font-weight: 400;
+        font-size: 3rem;
+        line-height: .8rem;
+    }
+    .modal__title {
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 2.5rem;
+        margin-bottom: 0.5rem;
+        padding: 1rem;
+    }
+    .modal__subtitle {
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: .8rem;
+        margin-bottom: 1.5rem;
+    }
+    .quiz__button {
+        font-weight: 400;
+        font-size: .8rem;
+        line-height: .8rem;
+        letter-spacing: .6px;
+        width: 14rem;
+        height: 5rem;
+    }
+    .quiz__button-arrow {
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-left: 0.4rem;
+    }
+}
+
+

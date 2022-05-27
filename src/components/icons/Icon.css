@@ -1,0 +1,7 @@
+.icon {
+    transform: translate(5%,5%);
+    position: relative;
+    color: #373b62;
+    width: 1.6rem;
+    height: 1.6rem;
+}

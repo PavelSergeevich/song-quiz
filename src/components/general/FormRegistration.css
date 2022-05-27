@@ -144,6 +144,10 @@ h1 {
     margin: 0 auto;
 }
 
+.link {
+    text-decoration: none;
+}
+
 .modal__button:hover {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(90deg, #7E55B3 -0.37%, #A769C4 100.37%);
 }
