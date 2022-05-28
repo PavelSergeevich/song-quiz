@@ -25,6 +25,7 @@ const GameView = ({children} : NameWrapperProps) => {
     const [isAnswerCorrect, setIsAnswerCorrect] = useState(true)
     const [scoreToShow, setScoreToShow] = useState(0)
     const [styleForProgress, setStyleForProgress] = useState("quiz__progress")
+    const [scoreCounter, setScoreCounter] = useState(3)
 
     const block = getDataFromSStorage()
 
@@ -44,8 +45,6 @@ const GameView = ({children} : NameWrapperProps) => {
         setStyleForProgress(styleForProgress+` active_${currentQuestion+1}`)
     }, [currentQuestion])
 
-    let scoreCounter = 3;
-
     const quizHandler = (e: any) => {
         e.stopPropagation()
         setShowInfo(true)
@@ -59,6 +58,7 @@ const GameView = ({children} : NameWrapperProps) => {
                 setIsAnswerCorrect(false)
                 setScoreToShow(tempScore + scoreCounter)
                 setStyleForProgress(styleForProgress+` correct__progress_${currentQuestion+1}`)
+                setScoreCounter(3)
                 // @ts-ignore
                 document.getElementById(`${block[currentQuestion].genre}`).classList.add("correct")
                 if (document.getElementById(`${block[currentQuestion].genre+"_arrow"}`)) {
@@ -67,12 +67,11 @@ const GameView = ({children} : NameWrapperProps) => {
                 }
             } else {
                 e.currentTarget.classList.add("wrong")
-                scoreCounter--
+                setScoreCounter(scoreCounter - 1)
+                console.log(scoreCounter)
             }
         } else {
             setAnswerToShow(Number(e.currentTarget.innerText.charAt(1)))
-        //     let answer: any = Number(e.currentTarget.innerText.charAt(1))
-        //     setAnswerToShow(answer)
         }
     }
 
