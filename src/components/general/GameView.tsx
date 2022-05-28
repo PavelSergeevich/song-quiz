@@ -19,6 +19,7 @@ const GameView = ({children} : NameWrapperProps) => {
 
     const [randomNum, setRandomNum] = useState( (1 + Math.random()*3.9) >> 0);
     const [showInfo, setShowInfo] = useState(false)
+    const [stopClick, setStopClick] = useState(false)
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [answerToShow, setAnswerToShow] = useState(0)
     const [isAnswerCorrect, setIsAnswerCorrect] = useState(true)
@@ -39,22 +40,20 @@ const GameView = ({children} : NameWrapperProps) => {
         sessionStorage.setItem("current_question", currentQuestion.toString())
         const random = sessionStorage.getItem("random_answer")
         setRandomNum(Number(random))
-        setAnswerToShow(Number(random))
+        //setAnswerToShow(Number(random))
         setStyleForProgress(styleForProgress+` active_${currentQuestion+1}`)
     }, [currentQuestion])
-
-    useEffect(() => {
-
-    }, [showInfo])
 
     let scoreCounter = 3;
 
     const quizHandler = (e: any) => {
         e.stopPropagation()
-        if (!showInfo) {
+        setShowInfo(true)
+        if (!stopClick) {
+            setAnswerToShow(Number(e.currentTarget.innerText.charAt(1)))
             if (e.currentTarget.innerText.charAt(1) === randomNum.toString()) {
                 e.currentTarget.classList.add("right")
-                setShowInfo(true)
+                setStopClick(true)
                 let tempScore: any = Number(sessionStorage.getItem(scoreId))
                 sessionStorage.setItem(scoreId, (tempScore + scoreCounter).toString())
                 setIsAnswerCorrect(false)
@@ -71,8 +70,9 @@ const GameView = ({children} : NameWrapperProps) => {
                 scoreCounter--
             }
         } else {
-            let answer: any = Number(e.currentTarget.innerText.charAt(1))
-            setAnswerToShow(answer)
+            setAnswerToShow(Number(e.currentTarget.innerText.charAt(1)))
+        //     let answer: any = Number(e.currentTarget.innerText.charAt(1))
+        //     setAnswerToShow(answer)
         }
     }
 
@@ -119,7 +119,8 @@ const GameView = ({children} : NameWrapperProps) => {
                         classForPlayer={"actions__player"}
                         songToPlay={block[currentQuestion].data[randomNum-1].audio}
                         random={randomNum}
-                        image={showInfo ? {
+                        switcher={currentQuestion}
+                        image={stopClick ? {
                             backgroundImage: `url(https://levi9-song-quiz.herokuapp.com/api/${block[currentQuestion].data[randomNum-1].image})`,
                             backgroundPosition: "center center",
                             backgroundSize: "auto 9rem",
@@ -160,6 +161,7 @@ const GameView = ({children} : NameWrapperProps) => {
                             onClick={() => {
                                 setCurrentQuestion(currentQuestion+1)
                                 setShowInfo(false)
+                                setStopClick(false)
                                 setIsAnswerCorrect(true)
                                 // @ts-ignore
                                 document.getElementById(`${block[currentQuestion+1].genre}`).classList.add("active")

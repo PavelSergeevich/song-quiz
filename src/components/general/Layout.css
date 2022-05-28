@@ -5,6 +5,7 @@
     width: 100%;
     z-index: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .bg__animated {
@@ -65,5 +66,24 @@
         width: 40rem;
         height: 40rem;
         z-index: 0;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .bg__animated {
+        width: 375px;
+        height: 2rem;
+        z-index: 0;
+    }
+    .bg__animated-rectangle--1 {
+        display: none;
+    }
+
+    .bg__animated-rectangle--2 {
+        display: none;
+    }
+
+    .bg__animated-rectangle--3 {
+        display: none;
     }
 }

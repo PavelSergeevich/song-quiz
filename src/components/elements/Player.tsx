@@ -9,21 +9,22 @@ const Player = (props: any) => {
     const [playSwitcher, setPlaySwitcher] = useState(false)
     const [trackTime, setTrackTime] = useState(0);
 
-    // @ts-ignore
-    // const currentTrack = document.getElementById('currentTrack')
     const currentTrack = useRef()
+
+    const currentInput = useRef()
+
     // @ts-ignore
     const durationTime = currentTrack.current ? currentTrack.current.duration >> 0 : 30
-    //const durationTime = 33
 
-    let progress = `${((trackTime/durationTime)*100).toString()} + %`
+    useEffect(() => resetHandler(), [props.switcher])
 
     let IconToShow = () => !playSwitcher ? (<PlayIcon/>) : (<PauseIcon/>)
 
     const playHandler = () => {
+        resetHandler()
         if (!playSwitcher) {
             // @ts-ignore
-            currentTrack.current.currentTime = trackTime
+            currentTrack.current.currentTime = currentInput.current.value
             // @ts-ignore
             currentTrack.current.play()
             setPlaySwitcher(true)
@@ -37,11 +38,17 @@ const Player = (props: any) => {
     const rangeHandler = () => {
         if (playSwitcher) {
             // @ts-ignore
-            currentTrack.current.currentTime = trackTime
+            currentTrack.current.currentTime = currentInput.current.value
             // @ts-ignore
             currentTrack.current.play()
         }
     }
+
+   const resetHandler = () => {
+        setTrackTime(0)
+        setPlaySwitcher(false)
+    }
+    const styleRange: any = {"--background-size": "0%"};
 
     return (
         <div className={props.classForPlayer}>
@@ -55,18 +62,19 @@ const Player = (props: any) => {
                     {IconToShow()}
                 </div>
                 <audio
-                    id="currentTrack"
                     // @ts-ignore
                     ref={currentTrack}
                     src={`https://levi9-song-quiz.herokuapp.com/api/${props.songToPlay}`}
                     style={{display: "none"}}
+                    preload="auto"
                     onTimeUpdate={() => {
                         // @ts-ignore
-                        setTrackTime(currentTrack.current.currentTime >> 0)
+                        setTrackTime(currentTrack.current.currentTime)
+                        // @ts-ignore
+                        currentInput.current.style.setProperty("--background-size", `${((currentTrack.current.currentTime/ durationTime) * 100)}%`);
                         // @ts-ignore
                         if (currentTrack.current.ended) {
-                            setTrackTime(0)
-                            setPlaySwitcher(false)
+                            resetHandler()
                         }
                     }
                     }
@@ -74,21 +82,14 @@ const Player = (props: any) => {
                 </audio>
             </div>
             <div id="seek" className="player-rightside">
-                <div data-range="" className="custom__range">
-                    <div data-range="" className="progress-bar">
-                        <div data-range=""
-                             className="progress-bar-background bg-quiz-800">
-                        </div>
-                        <div data-range=""
-                             className="progress-bar-cover bg-quiz-300"
-                             style={{width: progress}}>
-                        </div>
-                    </div>
+                <div className="custom__range">
                     <input
                         type="range"
                         className="range"
+                        // @ts-ignore
+                        ref={currentInput}
                         data-range=""
-                        id="slider"
+                        id={props.id}
                         name="foo"
                         min={0}
                         max={durationTime}
@@ -96,18 +97,19 @@ const Player = (props: any) => {
                         step="0.1"
                         onChange={(e: ChangeEvent<HTMLInputElement>) => {
                             // @ts-ignore
-                            setTrackTime(e.target.value);
+                            setTrackTime(e.target.valueAsNumber)
                         }}
                         // @ts-ignore
                         onMouseDown={() => currentTrack.current.pause()}
                         onMouseUp={() => rangeHandler()}
+                        style={styleRange}
                     />
                 </div>
                 <div className="player-time">
                     <div
                         id="player-time-current"
                         className="player-time-current">
-                        00:{trackTime <= 9 ? "0" + (trackTime >> 0) : trackTime >> 0}
+                        00:{trackTime < 10 ? "0" + (trackTime >> 0) : trackTime >> 0}
                     </div>
                     <div
                         className="player-time-total">

@@ -1,17 +1,8 @@
 .container {
     position: relative;
-    margin: 3rem 6rem;
+    margin: 0 auto;
+    padding: 1rem;
     z-index: 1000;
-}
-
-h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
 }
 
 .quiz__header {
@@ -34,7 +25,7 @@ h2 {
     grid-template-columns: repeat(12,minmax(0,1fr));
     grid-gap: 3rem;
     gap: 3rem;
-    padding: 2rem 4rem 2rem 4rem;
+    padding: 2rem 4rem;
     margin-bottom: 1rem;
     overflow: hidden;
     background: #1b1d31;
@@ -151,7 +142,8 @@ h2 {
 }
 
 .quiz__music_genre {
-    padding: 0 6rem;
+    padding: 0 1rem;
+    margin: 0 auto;
     width: 100%;
     height: 5rem;
     border-radius: 1rem 1rem 0 0;
@@ -176,7 +168,8 @@ ul {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    padding-inline-start: 40px;
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
 }
 
 ul li {
@@ -342,18 +335,32 @@ li {
     text-decoration: none;
 }
 
-@media screen and (max-width: 1185px) {
+@media screen and (max-width: 1440px) {
     .container {
-        margin: 2.5rem 5.5rem;
+        margin: 2rem 2rem;
     }
-    .quiz__header-logo {
-        width: 13rem;
-        height: 2rem;
+    .quiz__wrapper {
+        padding: 1rem 3rem;
+    }
+    .player__button {
+        margin-right: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .container {
+        margin: 0rem 12rem;
+    }
+    .quiz__wrapper {
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 2rem;
+        grid-column-gap: 0;
+        /*grid-auto-rows: 50%;*/
+        grid-template-areas: "a" "b";
     }
     .actions {
         grid-area: a;
-        margin-bottom: 2.75rem;
-        z-index: 1;
+        margin-bottom: 2rem;
     }
     .actions__title {
         display: block;
@@ -369,6 +376,16 @@ li {
         line-height: 1.3rem;
         margin-bottom: 2.5rem;
     }
+    .quiz__header-logo {
+        width: 13rem;
+        height: 2rem;
+    }
+    .actions {
+        grid-area: a;
+        margin-bottom: 2.75rem;
+        z-index: 1;
+    }
+
     .info {
         grid-area: b;
         z-index: 0;
@@ -379,152 +396,24 @@ li {
         z-index: 0;
         display: none;
     }
-    .quiz__wrapper {
-        grid-template-columns: repeat(1, 1fr);
-        padding: 5rem 4rem 2rem 5rem;
-        grid-row-gap: 2rem;
-        grid-column-gap: 0;
-        grid-auto-rows: 50%;
-        grid-template-areas: "a" "b";
-    }
-    .quiz__header-content--playerName {
-        font-size: 1.4rem;
-        margin-right: 2.5rem;
-    }
-    .quiz__header-content--title {
-        font-size: 1.4rem;
-    }
-    .quiz__header-content--score {
-        font-size: 1.4rem;
-    }
-    .quiz__music_genre__list--item {
-        font-weight: 400;
-        font-size: 1.2rem;
-    }
-    .quiz__music_genre__list--item-arrow {
-        width: 1.3rem;
-        height: 1.3rem;
-    }
-    .actions__player {
-        width: 100%;
-    }
-    .player__button {
-        margin-right: 1.4rem;
-    }
-    .custom__range [type=range] {
-        width: 50rem;
-    }
-    .actions__question {
-        width: 100%;
-    }
-    .quiz__button {
-        font-weight: 600;
-        font-size: 1.2rem;
-        line-height: 1.3rem;
-        letter-spacing: .8px;
-        width: 18rem;
-        height: 6rem;
-    }
-    .quiz__button-arrow {
-        width: 1.8rem;
-        height: 1.8rem;
-        margin-left: 0.6rem;
+
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        margin: 0rem 6rem;
     }
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 768px) {
     .container {
-        margin: 2rem 5rem;
-    }
-    .actions {
-        grid-area: a;
-        margin-bottom: 2rem;
-    }
-    .actions__title {
-        display: block;
-        font-weight: 500;
-        font-size: 2rem;
-        line-height: 3rem;
-        margin-bottom: .6rem;
-    }
-    .actions__subtitle {
-        display: block;
-        font-weight: 400;
-        font-size: 1rem;
-        line-height: 1rem;
-        margin-bottom: 2rem;
-    }
-    .info {
-        grid-area: b;
-    }
-    .info__picture {
-        visibility: hidden;
-    }
-    .quiz__header-content--playerName {
-        font-size: 1.2rem;
-        margin-right: 2rem;
-    }
-    .quiz__header-content--title {
-        font-size: 1.2rem;
-    }
-    .quiz__header-content--score {
-        font-size: 1.2rem;
-    }
-    .quiz__music_genre__list--item {
-        font-weight: 400;
-        font-size: 1rem;
-    }
-    .quiz__music_genre__list--item-arrow {
-        width: 1.1rem;
-        height: 1.1rem;
-    }
-    .player__button {
-        margin-right: 1.6rem;
-    }
-    .custom__range [type=range] {
-        width: 40rem;
-    }
-    .quiz__button {
-        font-weight: 500;
-        font-size: 1rem;
-        line-height: 1rem;
-        letter-spacing: .6px;
-        width: 16rem;
-        height: 5.5rem;
-    }
-    .quiz__button-arrow {
-        width: 1.6rem;
-        height: 1.6rem;
-        margin-left: 0.5rem;
+        margin: 0rem 3rem;
     }
 }
 
-@media (max-width: 750px) {
+@media screen and (max-width: 425px) {
     .container {
-        margin: 1.5rem 4.5rem;
-    }
-    .player__button {
-        margin-right: 1.8rem;
-    }.custom__range [type=range] {
-         width: 30rem;
-     }
-}
-
-@media (max-width: 680px) {
-    .container {
-        margin: 1rem 4rem;
-    }
-    .player__button {
-        margin-right: 2rem;
-    }
-    .custom__range [type=range] {
-        width: 20rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .container {
-        margin:1rem 3rem;
+        margin: 0rem 1rem;
     }
     .actions {
         grid-area: a;
@@ -533,16 +422,18 @@ li {
     .actions__title {
         display: block;
         font-weight: 400;
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         line-height: 2.5rem;
-        margin-bottom: .5rem;padding:1rem
+        margin-bottom: .5rem;
+        padding: 0.5rem
     }
     .actions__subtitle {
         display: block;
         font-weight: 400;
-        font-size: .8rem;
+        font-size: 1rem;
         line-height: .8rem;
         margin-bottom: 1.5rem;
+        padding: 0.5rem
     }
     .info {
         grid-area: b;
@@ -551,28 +442,25 @@ li {
         visibility:hidden;
     }
     .quiz__header-content--playerName {
-        font-size: 1rem;
+        font-size: 1.2rem;
         margin-right: 1.5rem;
     }
     .quiz__header-content--title {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
     .quiz__header-content--score {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     .quiz__music_genre__list--item {
         font-weight: 400;
-        font-size: .8rem;
+        font-size: 1.1rem;
     }
     .quiz__music_genre__list--item-arrow {
-        width: 0.9rem;
-        height: 0.9rem;
+        width: 1.1rem;
+        height: 1.1rem;
     }
     .player__button {
         margin-right: 2.2rem;
-    }
-    .custom__range [type=range] {
-        width: 12rem;
     }
     .actions__question__container--title {
         font-size: 1rem;
@@ -592,13 +480,13 @@ li {
     }
 }
 
-@media (max-width:470px) {
+@media screen and (max-width:375px) {
     .container {
-        margin: 1rem 2rem;
+        margin: 0 auto;
     }
     .quiz__wrapper {
         grid-template-columns: repeat(1, 1fr);
-        padding: 1rem 3rem 2rem;
+        padding: 1rem 1rem;
         grid-row-gap: 2rem;
         grid-column-gap: 0;
         grid-auto-rows: 50%;
@@ -607,27 +495,18 @@ li {
     .player__button {
         margin-right: 2.5rem;
     }
-    .custom__range [type=range] {
-        width: 9rem;
-    }
     .actions__question__container--title {
         font-size: .8rem;
     }
 }
 
-@media (max-width: 320px) {
-    .container {
-        margin: 1rem;
-    }
+@media screen and (max-width: 320px) {
     .quiz__wrapper {
         grid-template-columns:repeat(1, 1fr);
-        padding: 1rem 3rem 2rem;
+        padding: 1rem 2rem;
         grid-row-gap: 2rem;
         grid-column-gap: 0;
         grid-auto-rows: 50%;
         grid-template-areas:"a" "b";
-    }
-    .custom__range [type=range] {
-        width: 8rem;
     }
 }
