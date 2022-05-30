@@ -1,6 +1,6 @@
 import React from 'react';
 import "./ScoreView.css"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import logo from "../../logo.png"
 import union_sum from "../../union_sum.png"
 import Arrow from "../icons/Arrow";
@@ -9,11 +9,16 @@ const ScoreView = () => {
     const name: any = sessionStorage.getItem("player")
     const scoreId: any = "score_" + name
     const score: any = sessionStorage.getItem(scoreId)
+
+    let navigate = useNavigate();
+
     return (
         <div className="wrapper">
             <img src={logo}
                  alt="logo"
-                 className="logo" />
+                 className="logo"
+                 onClick={() => navigate("/", { replace: true })}
+            />
             <form className="modal_container modal-summary">
                 <img src={union_sum}
                      alt="union-quiz-picture"

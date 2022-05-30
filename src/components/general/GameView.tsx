@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import "./GameView.css"
 import logo from "../../logo.png"
 import union from "../../union.png"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Arrow from "../icons/Arrow";
 import {getDataFromSStorage} from "../../api/api";
 import InfoContainer from "../elements/InfoContainer";
@@ -86,6 +86,7 @@ const GameView = ({children} : NameWrapperProps) => {
             count={answerToShow}
         />
     )
+    let navigate = useNavigate();
 
     return (
         <div className="container">
@@ -93,7 +94,9 @@ const GameView = ({children} : NameWrapperProps) => {
                 <img
                     src={logo}
                     alt="logo"
-                    className="quiz__header-logo" />
+                    className="quiz__header-logo"
+                    onClick={() => navigate("/", { replace: true })}
+                />
                 <div className="quiz__header-content">
                     {children}
                     <h2 className="quiz__header-content--title">
